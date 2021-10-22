@@ -7,9 +7,9 @@ import 'package:payflow/shared/themes/app_text_styles.dart';
 import 'package:payflow/shared/widgets/social_login/social_login_button.dart';
 
 class LoginPage extends StatelessWidget {
-  final LoginController loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = Get.find(tag: 'login');
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
             Positioned(
               left: 0,
               right: 0,
-              top: 40,
+              top: 80,
               child: Image.asset(
                 AppImages.person,
                 width: 208,
@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     child: SocialLoginButton(
                       onTap: () {
-                        print('ola');
+                        loginController.googleSignIn();
                       },
                     ),
                   ),

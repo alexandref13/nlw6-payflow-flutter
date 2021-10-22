@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
+import 'package:payflow/shared/auth/auth_controller.dart';
 
 class SplashController extends GetxController {
-  handleToLogin() {
-    Future.delayed(Duration(seconds: 4)).then((value) {
-      Get.toNamed('/login');
-    });
-  }
+  AuthController authController = Get.put(
+    AuthController(),
+    permanent: true,
+  );
 
   @override
   void onInit() {
-    handleToLogin();
+    authController.currentUser();
     super.onInit();
   }
 }
