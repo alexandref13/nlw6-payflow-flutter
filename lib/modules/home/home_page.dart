@@ -16,94 +16,97 @@ class HomePage extends StatelessWidget {
         color: Colors.blue,
       )
     ];
-    return SafeArea(
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(152),
-          child: Container(
-            height: 152,
-            color: AppColors.primary,
-            child: Center(
-              child: ListTile(
-                title: Text.rich(
-                  TextSpan(
-                    text: 'Olá, ',
-                    style: TextStyles.titleRegular,
-                    children: [
-                      TextSpan(
-                        text: "Alexandre",
-                        style: TextStyles.titleBoldBackground,
-                      ),
-                    ],
-                  ),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(154),
+        child: Container(
+          height: 152,
+          color: AppColors.primary,
+          child: Center(
+            child: ListTile(
+              title: Text.rich(
+                TextSpan(
+                  text: 'Olá, ',
+                  style: TextStyles.titleRegular,
+                  children: [
+                    TextSpan(
+                      text: "Alexandre",
+                      style: TextStyles.titleBoldBackground,
+                    ),
+                  ],
                 ),
-                subtitle: Text(
-                  'Mantenha suas contas em dia',
-                  style: TextStyles.captionShape,
-                ),
-                trailing: Container(
-                  height: 48,
-                  width: 48,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
+              ),
+              subtitle: Text(
+                'Mantenha suas contas em dia',
+                style: TextStyles.captionShape,
+              ),
+              trailing: Container(
+                height: 48,
+                width: 48,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(5),
                 ),
               ),
             ),
           ),
         ),
-        bottomNavigationBar: Container(
-          height: 90,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
+      ),
+      bottomNavigationBar: Container(
+        height: 90,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {
+                homeController.setPage(0);
+              },
+              icon: Obx(
+                () => Icon(Icons.home,
+                    color: homeController.currentPage.value == 0
+                        ? AppColors.primary
+                        : AppColors.body),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed('/barcode');
+              },
+              child: Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    Get.toNamed('/barcode');
+                  },
+                  icon: Icon(
+                    Icons.add_box_outlined,
+                    color: AppColors.background,
+                  ),
+                ),
+              ),
+            ),
+            IconButton(
                 onPressed: () {
-                  homeController.setPage(0);
+                  homeController.setPage(1);
                 },
                 icon: Obx(
-                  () => Icon(Icons.home,
-                      color: homeController.currentPage.value == 0
-                          ? AppColors.primary
-                          : AppColors.body),
-                ),
-              ),
-              GestureDetector(
-                child: Container(
-                  width: 56,
-                  height: 56,
-                  decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(5),
+                  () => Icon(
+                    Icons.description_outlined,
+                    color: homeController.currentPage.value == 1
+                        ? AppColors.primary
+                        : AppColors.body,
                   ),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.add_box_outlined,
-                      color: AppColors.background,
-                    ),
-                  ),
-                ),
-              ),
-              IconButton(
-                  onPressed: () {
-                    homeController.setPage(1);
-                  },
-                  icon: Obx(
-                    () => Icon(
-                      Icons.description_outlined,
-                      color: homeController.currentPage.value == 1
-                          ? AppColors.primary
-                          : AppColors.body,
-                    ),
-                  )),
-            ],
-          ),
+                )),
+          ],
         ),
-        body: Obx(
-          () => pages[homeController.currentPage.value],
-        ),
+      ),
+      body: Obx(
+        () => pages[homeController.currentPage.value],
       ),
     );
   }
