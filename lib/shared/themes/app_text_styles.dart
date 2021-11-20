@@ -78,32 +78,37 @@ class TextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.background,
   );
-  static final captionBackground = GoogleFonts.lexendDeca(
+  static final input = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.input,
+  );
+  static final captionBackground = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w400,
     color: AppColors.background,
   );
-  static final captionShape = GoogleFonts.lexendDeca(
+  static final captionShape = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w400,
     color: AppColors.shape,
   );
-  static final captionBody = GoogleFonts.lexendDeca(
+  static final captionBody = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w400,
     color: AppColors.body,
   );
-  static final captionBoldBackground = GoogleFonts.lexendDeca(
+  static final captionBoldBackground = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: AppColors.background,
   );
-  static final captionBoldShape = GoogleFonts.lexendDeca(
+  static final captionBoldShape = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: AppColors.shape,
   );
-  static final captionBoldBody = GoogleFonts.lexendDeca(
+  static final captionBoldBody = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: AppColors.body,

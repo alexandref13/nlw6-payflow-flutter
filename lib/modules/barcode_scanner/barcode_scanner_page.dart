@@ -19,8 +19,7 @@ class BarcodeScannerPage extends StatelessWidget {
             () {
               if (controller.status.value.showCamera) {
                 return Container(
-                  child:
-                      controller.status.value.cameraController!.buildPreview(),
+                  child: controller.cameraController!.buildPreview(),
                 );
               } else {
                 return Container();
@@ -80,10 +79,12 @@ class BarcodeScannerPage extends StatelessWidget {
                       'Tente escanear novamente ou digite o código do seu boleto',
                   primaryLabel: 'Escanear novamente',
                   primaryOnTap: () {
-                    controller.getAvailableCameras();
+                    controller.scanWithCamera();
                   },
                   secondaryLabel: 'Digitar código',
-                  secondaryOnTap: () {},
+                  secondaryOnTap: () {
+                    Get.offNamed('/insertBoleto');
+                  },
                 );
               } else {
                 return Container();
